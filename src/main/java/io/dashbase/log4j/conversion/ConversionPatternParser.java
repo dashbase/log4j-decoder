@@ -3,7 +3,6 @@ package io.dashbase.log4j.conversion;
 import io.dashbase.log4j.model.ConversionPatternEl;
 import io.dashbase.log4j.util.DateTimeFormatUtils;
 import io.dashbase.log4j.util.RegexUtils;
-
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -12,6 +11,11 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Attribution:
+ * Parts of this class was copied from:
+ * https://github.com/logsaw/logsaw-app/blob/f72691ec91ce4559eb818f47b33bc2871f6ea95b/net.sf.logsaw.dialect.log4j/src/net/sf/logsaw/dialect/log4j/pattern/Log4JConversionPatternTranslator.java
+ */
 public class ConversionPatternParser {
     private static final Pattern EXTRACTION_PATTERN = Pattern.compile("%(-?(\\d+))?(\\.(\\d+))?([a-zA-Z]+)(\\{([^\\}]+)\\})*");
 

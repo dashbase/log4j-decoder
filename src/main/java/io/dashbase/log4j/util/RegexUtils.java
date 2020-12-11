@@ -1,11 +1,15 @@
 package io.dashbase.log4j.util;
 
 import io.dashbase.log4j.model.ConversionPatternEl;
-
 import java.util.BitSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+
+/**
+ * Parts of this class was copied from: 
+ * https://github.com/logsaw/logsaw-app/blob/master/net.sf.logsaw.dialect.pattern/src/net/sf/logsaw/dialect/pattern/RegexUtils.java
+ */
 public class RegexUtils {
     private static final Pattern UNQUOTE_P_1 = Pattern.compile("'[^']+'");
     private static final Pattern UNQUOTE_P_2 = Pattern.compile("''");
