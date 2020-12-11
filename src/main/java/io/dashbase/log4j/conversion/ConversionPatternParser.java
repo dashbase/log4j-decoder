@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 
 /**
  * Attribution:
- * Parts of this class was copied from:
+ * Part of this class was copied from:
  * https://github.com/logsaw/logsaw-app/blob/f72691ec91ce4559eb818f47b33bc2871f6ea95b/net.sf.logsaw.dialect.log4j/src/net/sf/logsaw/dialect/log4j/pattern/Log4JConversionPatternTranslator.java
  */
 public class ConversionPatternParser {
