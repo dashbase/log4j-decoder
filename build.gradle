@@ -20,7 +20,7 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/dashbase/log4j-decoder")
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ID")
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
                 password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
             }
         }
