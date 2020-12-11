@@ -1,6 +1,5 @@
-package io.dashbase.parser.log4j.utils;
+package io.dashbase.log4j.util;
 
-import io.dashbase.parser.util.RegexUtils;
 import org.junit.Assert;
 import org.junit.Test;
 

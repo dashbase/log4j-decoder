@@ -1,18 +1,13 @@
-package io.dashbase.parser.log4j.parser;
+package io.dashbase.log4j.parser;
+
+import io.dashbase.log4j.model.Log4jLoggingEvent;
+import org.junit.Test;
+
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
-
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-
-import org.junit.Test;
-
-import io.dashbase.parser.log4j.model.Log4jLoggingEvent;
 
 
 public class Log4jDecoderTest {
