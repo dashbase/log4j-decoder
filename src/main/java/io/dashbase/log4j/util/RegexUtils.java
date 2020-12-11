@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 
 /**
+ * Attribution:
  * Parts of this class was copied from: 
  * https://github.com/logsaw/logsaw-app/blob/master/net.sf.logsaw.dialect.pattern/src/net/sf/logsaw/dialect/pattern/RegexUtils.java
  */
