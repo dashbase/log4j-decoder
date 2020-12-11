@@ -1,0 +1,33 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+repositories {
+    jcenter()
+}
+
+group = "io.dashbase"
+
+dependencies {
+    implementation 'com.github.ben-manes.caffeine:caffeine:2.8.8'
+    testImplementation 'junit:junit:4.13'
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/dashbase/log4j-decoder")
+            credentials {
+                username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ID")
+                password = project.findProperty("gpr.key") ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}

@@ -1,4 +1,4 @@
-package io.dashbase.parser.log4j.model;
+package io.dashbase.log4j.model;
 
 import java.time.Instant;
 import java.util.HashMap;

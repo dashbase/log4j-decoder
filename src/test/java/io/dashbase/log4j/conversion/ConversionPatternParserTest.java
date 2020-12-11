@@ -1,6 +1,6 @@
-package io.dashbase.parser.log4j.conversion;
+package io.dashbase.log4j.conversion;
 
-import io.dashbase.parser.log4j.model.ConversionPatternEl;
+import io.dashbase.log4j.model.ConversionPatternEl;
 import org.junit.Assert;
 import org.junit.Test;
 

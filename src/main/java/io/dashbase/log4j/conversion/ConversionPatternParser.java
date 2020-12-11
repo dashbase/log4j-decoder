@@ -1,8 +1,8 @@
-package io.dashbase.parser.log4j.conversion;
+package io.dashbase.log4j.conversion;
 
-import io.dashbase.parser.log4j.model.ConversionPatternEl;
-import io.dashbase.parser.util.DateTimeFormatUtils;
-import io.dashbase.parser.util.RegexUtils;
+import io.dashbase.log4j.model.ConversionPatternEl;
+import io.dashbase.log4j.util.DateTimeFormatUtils;
+import io.dashbase.log4j.util.RegexUtils;
 
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;

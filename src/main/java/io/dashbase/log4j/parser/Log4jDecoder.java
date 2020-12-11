@@ -1,9 +1,9 @@
-package io.dashbase.parser.log4j.parser;
+package io.dashbase.log4j.parser;
 
-import com.google.common.cache.Cache;
-import com.google.common.cache.CacheBuilder;
-import io.dashbase.parser.log4j.conversion.ConversionPatternParser;
-import io.dashbase.parser.log4j.model.*;
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
+import io.dashbase.log4j.conversion.ConversionPatternParser;
+import io.dashbase.log4j.model.*;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -13,16 +13,15 @@ import java.time.temporal.ChronoField;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Log4jDecoder {
     private final Cache<LocalDate, DateTimeFormatter> dateTimeFormatterCache =
-        CacheBuilder.newBuilder().maximumSize(10).build();
+        Caffeine.newBuilder().maximumSize(10).build();
 
     private final Cache<CharSequence, Instant> timestampCache =
-        CacheBuilder.newBuilder().maximumSize(1000).build();
+        Caffeine.newBuilder().maximumSize(1000).build();
 
     private final List<ConversionPatternEl> extractedRules;
     private final Pattern pattern;
@@ -76,16 +75,12 @@ public class Log4jDecoder {
                 // If the date pattern only contains time, use the today's year/month/day when parsing the input string.
                 if (!rule.hasDate) {
                     LocalDate today = LocalDate.now(defaultTimeZone);
-                    try {
-                        dtf = dateTimeFormatterCache.get(today, () ->
-                            new DateTimeFormatterBuilder().append(rule.dateTimeFormatter)
-                                .parseDefaulting(ChronoField.YEAR, today.getYear())
-                                .parseDefaulting(ChronoField.MONTH_OF_YEAR, today.getMonthValue())
-                                .parseDefaulting(ChronoField.DAY_OF_MONTH, today.getDayOfMonth())
-                                .toFormatter().withZone(defaultTimeZone));
-                    } catch (ExecutionException e) {
-                        throw new IllegalArgumentException(e);
-                    }
+                    dtf = dateTimeFormatterCache.get(today, (tdy) ->
+                        new DateTimeFormatterBuilder().append(rule.dateTimeFormatter)
+                            .parseDefaulting(ChronoField.YEAR, today.getYear())
+                            .parseDefaulting(ChronoField.MONTH_OF_YEAR, today.getMonthValue())
+                            .parseDefaulting(ChronoField.DAY_OF_MONTH, today.getDayOfMonth())
+                            .toFormatter().withZone(defaultTimeZone));
                 }
 
                 ZonedDateTime zdt;

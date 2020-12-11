@@ -1,8 +1,7 @@
-package io.dashbase.parser.log4j.model;
+package io.dashbase.log4j.model;
 
 import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.function.Consumer;
 
 public final class ConversionPatternEl {
 	public enum Type {
